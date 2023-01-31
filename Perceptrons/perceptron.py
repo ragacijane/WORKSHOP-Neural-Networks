@@ -67,9 +67,23 @@ for epoch in range(n):# Sve epohe treniranja
         error += np.abs((D[k] - Ypred))# Računanje greške klasifikacij
 
     error /= np.shape(X)[0]
-    print('>epoch=%d, lrate=%.3f, error=%.3f'%( epoch+1, lr, error))
+    print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch+1, lr, error))
 
     if error < Emax:# Ako greška padne ispod praga, zaustavlja se obučavanje
         break
 
-#in 6 dopisati
+w1 = W[0]
+w2 = W[1]
+wb = W[2]
+x1 = np.linspace(-2, 6)
+x2 = -w1*x1/w2 - wb/w2
+plt.figure()
+plt.plot(x11, x21, 'o')
+plt.plot(x21, x22, '*')
+plt.plot(x1,x2)
+plt.xlabel('x1')
+plt.ylabel('x2')
+plt.ylim([-2, 6])
+plt.grid()
+plt.legend(['C1', 'C2', 'h(x)=0'])
+plt.show()
